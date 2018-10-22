@@ -1,0 +1,14 @@
+<div>
+  みなさん、こんにちわ。
+  OK Worksから、<%= @day %>、最新の案件情報をお届けします。
+</div>
+
+<ul>
+  <% @jobs.each do |job| %>
+    <li>
+      <%= job.title %>
+      <br>
+      <%= link_to url_for(job), url_for(job)%>
+    </li>    
+  <% end %>
+</ul>

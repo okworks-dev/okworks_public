@@ -1,0 +1,39 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  adapter: mysql2
+  encoding: utf8
+  database: okworks_development
+  pool: 5
+  username: root
+  password:
+  host: 127.0.0.1
+  socket: /tmp/mysql.sock
+
+production:
+  <<: *default
+  database: okworks_production
+  username: okworks
+  password: 
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: okworks_test
+  username: root
+  password:
+  host: 127.0.0.1

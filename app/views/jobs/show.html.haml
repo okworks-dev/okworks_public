@@ -1,0 +1,69 @@
+- title "#{@job.title} - #{@job.job_type.name}"
+- description "#{@job.skills.map{|skill| skill.name}.join('、')}スキルが必要な#{@job.job_type.name}のIT系フリーランス求人・案件。#{@job.title}"
+
+= render 'layouts/pankuzu', links: [{text: '案件・求人を探す', url: jobs_path}, {text: @job.title, url: nil}]
+
+%section.mt-4.mb-4#about
+  .container
+    .row
+      .col-lg-8.mx-auto
+        %h1.h2= @job.title
+        %div{align: 'right'}= raw reward_html_helper(@job)
+%section#services.bg-light
+  .container
+    .row
+      .col-lg-8.mx-auto{:style => "padding: 20px 20px 20px;"}
+        %p
+          %strong 業務内容
+        %p
+          = simple_format(h(@job.detail))
+        %p
+          %strong 必要スキル
+        %p
+          = simple_format(h(@job.required_skill))
+%section
+  .container    
+    .row
+      .col-lg-8.mx-auto
+        %p.mt-3
+          %strong 案件詳細
+        .panel.panel-primary
+          .table-responsive
+            %table.table
+              %tbody
+                %tr
+                  %th.table-active 報酬
+                  %td= reward_helper(@job)
+                %tr
+                  %th.table-active 稼働日数
+                  %td= workdays_helper(@job)
+                %tr
+                  %th.table-active 勤務地
+                  %td= @job.location
+                %tr
+                  %th.table-active スキル
+                  %td
+                    - @job.skills.each do |skill|
+                      = link_to skill.name, jobs_path + '?' + {'q': {'skills_id_eq': skill.id}}.to_query, class: 'badge badge-primary'
+                %tr
+                  %th.table-active リモートOK
+                  %td
+                    = @job.remote_ok ? 'リモート可' : 'リモート不可'
+                %tr
+                  %th.table-active 職種
+                  %td
+                    = link_to @job.job_type.name, jobs_path + '?' + {'q': {'job_type_id_eq': @job.job_type.id}}.to_query
+                %tr
+                  %th.table-active 職種詳細
+                  %td= @job.job_type_detail
+                %tr
+                  %th.table-active 掲載元
+                  %td= @job.site.name
+        = link_to '案件に応募する', @job.key, class: 'btn btn-primary btn-block mb-3'
+
+%section#services.bg-light
+  .container.related_jobs
+    %h4{style: 'margin-top: 0px;'} 関連フリーランス案件・求人
+    .row
+      - @related_jobs.each do |job|
+        = render partial: 'job_card', locals: {job: job}

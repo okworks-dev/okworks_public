@@ -1,0 +1,141 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+.site-font {
+    font-family: arial, sans-serif;
+}
+
+.logo-font {
+    font-family: Noto Sans;
+    font-weight: bold;
+}
+
+.top-logo {
+    margin: auto;
+    vertical-align: top;
+}
+
+.top-area {
+    background-color: white;
+    background-image: image-url("/assets/top_images/laptop.jpg");
+    background-position: center; 
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.top-area::before{
+ content: ' ';
+ background-color: rgba(0,0,0,0.2);
+ position: absolute;
+ top: 0;
+ right: 0;
+ bottom: 0;
+ left: 0;
+}
+
+.top-detail-area{
+    padding-top: 100px;
+    position: relative;
+    text-align: center;
+}
+
+.top_copy{
+    font-weight: bold;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: white;    
+}
+
+.top_copy_sub{
+    font-family: 'Noto Sans JP', sans-serif;
+    color: white;    
+    margin-top:10px;
+}
+
+.nav-bar-top {
+    height: 400px;
+    display: block !important;
+}
+
+.nav-bar-other {
+    height: 100px;
+    display: block !important;
+}
+
+.home-title{
+    margin-top: 100px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.home-list-group {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.top_search_form{
+    width: 300px;
+}
+
+h4 {
+    margin-top: 30px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 900px){
+    .form-wrapper {
+        margin: 30px 100px 10px;
+    }
+}
+
+.form-wrapper {
+    text-align: left;
+}
+
+@media screen and (max-width: 900px){
+    .top-select-boxes {
+        display: none;
+    }
+}
+
+
+
+
+@media screen and (min-width: 768px){
+    .pc_chart, .pc-search {
+        display: block;
+    }
+    .sp_chart, .sp-search {
+        display: none;
+    }
+    .top-label {
+        color: white;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .pc_chart, .pc-search {
+        display: none;
+    }
+    .sp_chart, .sp-search {
+        display: block;
+    }
+    .top-label {
+        color: black;
+    }
+}
+
+.search-button {
+    width: 100%;
+    height:50px;
+}
+
+
+.toppage-margin {
+    height: 50px;
+}

@@ -1,0 +1,8 @@
+%a.list-group-item.list-group-item-action.flex-column.align-items-start{:href => "#{job_url(job.id)}"}
+  .d-flex.w-100
+    %div
+      %h5.mb-1= job.title
+      %div
+        = raw reward_html_helper(job)
+  - job.skills.each do |skill|
+    %span.badge.badge-primary= skill.name

@@ -1,0 +1,25 @@
+- title jobs_index_title(params, true)
+- description jobs_index_description(params)
+
+= render 'layouts/pankuzu', links: [{text: jobs_index_title(params) , url: nil}]
+.container
+  %h1.h2.my-4= jobs_index_title(params)      
+  = render 'home/search_form', pc_background: true
+  - if @jobs.size > 0
+    .text-right.text-secondary.mb-2
+      = "#{@jobs.offset_value + 1}〜#{@jobs.offset_value + @jobs.length} / #{@jobs.total_count}件"
+    .row
+      - @jobs.each do |job|
+        = render partial: 'job_card', locals: {job: job}
+  - else
+    .row
+      .col-lg-6.mt-3.mx-auto
+        %div{align: 'center'}
+          = image_tag 'https://image.flaticon.com/icons/svg/144/144007.svg', width: '50%'
+      .col-lg-12.mt-3.mb-3.mx-auto{align: 'center'}
+        %h5
+          = "#{jobs_index_title(params, true)}は見つかりませんでした。"
+          %br
+          その他の条件をお試しください。
+  %ul.pagination.justify-content-center
+    = paginate @jobs

@@ -1,0 +1,10 @@
+.container
+  %h4 最新案件
+  .list-group.home-list-group{:style => "margin-top:20px;"}
+    - jobs.each do |job|
+      %a.list-group-item.list-group-item-action.flex-column.align-items-start{:href => "#{job_url(job.id)}"}
+        .d-flex.w-100.justify-content-between
+          %h5.mb-1= job.title
+          %small= job.created_at.strftime("%Y/%m/%d")
+        - job.skills.each do |skill|
+          %span.badge.badge-primary= skill.name

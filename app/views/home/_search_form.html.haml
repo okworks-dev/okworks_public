@@ -1,0 +1,56 @@
+.pc-search{class: "#{'alert alert-dark' if pc_background}"}
+  = search_form_for(@q, url: jobs_path) do |f|
+    %div.form-row
+      .input-group.col-md-12.mb-3
+        = f.search_field :title_or_detail_cont, class: "form-control"
+        .input-group-append
+          %button.btn.btn-dark{:type => "submit"} 検索
+    %div.form-row.top-select-boxes
+      %div.form-group.col-md-3
+        = label_tag '', '技術', class: 'top-label'
+        = f.collection_select :skills_id_eq, @skills, :id, :name, {include_blank: '指定なし'}, {class: "form-control"}
+      %div.form-group.col-md-3
+        = label_tag '', '職種', class: 'top-label'
+        = f.collection_select :job_type_id_eq, @job_types, :id, :name, {include_blank: '指定なし'}, {class: "form-control"}
+      %div.form-group.col-md-3
+        = label_tag '', '稼働日数', class: 'top-label'
+        = select_tag :desired_number_of_days, options_for_select(@work_days, selected: params[:desired_number_of_days]), include_blank: '指定なし', class: "form-control"
+      %div.form-group.col-md-3
+        = label_tag '', '日給', class: 'top-label'
+        = f.select :average_reward_gteq, @average_rewards, {include_blank: '指定なし'}, {class: "form-control"}
+
+- if request.path == '/'
+  .toppage-margin
+
+.sp-search
+  / Button trigger modal
+  %button.btn.btn-dark.search-button.mb-3{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
+    検索する
+  / Modal
+  #exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog{:role => "document"}
+      .modal-content
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+        = search_form_for(@q, url: jobs_path) do |f|
+          .modal-body
+            %div.form-row
+              %div.form-group.col-md-3
+                = label_tag '', 'キーワード', class: 'top-label'
+                = f.search_field :title_or_detail_cont, class: "form-control"
+              %div.form-group.col-md-3
+                = label_tag '', '技術', class: 'top-label'
+                = f.collection_select :skills_id_eq, @skills, :id, :name, {include_blank: '指定なし'}, {class: "form-control"}
+              %div.form-group.col-md-3
+                = label_tag '', '職種', class: 'top-label'
+                = f.collection_select :job_type_id_eq, @job_types, :id, :name, {include_blank: '指定なし'}, {class: "form-control"}
+              %div.form-group.col-md-3
+                = label_tag '', '稼働日数', class: 'top-label'
+                = select_tag :desired_number_of_days, options_for_select(@work_days, selected: params[:desired_number_of_days]), include_blank: '指定なし', class: "form-control"
+              %div.form-group.col-md-3
+                = label_tag '', '日給', class: 'top-label'
+                = f.select :average_reward_gteq, @average_rewards, {include_blank: '指定なし'}, {class: "form-control"}
+          .modal-footer
+            %button.btn.btn-dark{:type => "submit"} 検索
+

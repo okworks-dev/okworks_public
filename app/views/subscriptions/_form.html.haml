@@ -1,0 +1,20 @@
+- if cookies.permanent[:suscribed] != 'true'
+  .container.mt-3.mb-3
+    = form_with url: subscriptions_create_path, method: :post do |f|
+      %input{:name => "skill_id", :type => "hidden", :value => params[:skill_ids]}/
+      %input{:name => "last_url", :type => "hidden", :value => request.original_url}/
+      .card
+        .card-body{:align => "center"}
+          最新の案件情報をメールで受取りませんか？
+          %br
+          %small OKWorksが最新の案件情報を定期的にお届けします。
+          .col-md-6.col-12.mt-2
+            %input#email.form-control{:name => "email", :placeholder => "メールアドレス", :required => "", :type => "email"}/
+          %div.form-row.top-select-boxes.mt-3
+            %div.form-group.col-md-3
+            %div.form-group.col-md-3
+              = f.collection_select :subscription_skill_id, @skills, :id, :name, {include_blank: 'スキル（指定なし）', selected: @subscription_skill}, {class: "form-control"}
+            %div.form-group.col-md-3
+              = f.collection_select :subscription_job_type_id, @job_types, :id, :name, {include_blank: '職種（指定なし）', selected: @subscription_job_type}, {class: "form-control"}
+            %div.form-group.col-md-3
+          %button.btn.btn-primary.mt-2{:type => "submit"} 登録する

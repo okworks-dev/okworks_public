@@ -1,0 +1,12 @@
+.text-white
+  %h5 技術から探す
+  .row
+    - Skill.all.each do |skill|
+      .col-md-3   
+        %div= link_to "#{skill.name}", jobs_path + '?' + {'q': {'skills_id_eq': skill.id}}.to_query
+  %h5.mt-3 職種から探す
+  .row
+    - JobType.all.each do |job_type|
+      .col-md-3   
+        %div= link_to "#{job_type.name}", jobs_path + '?' + {'q': {'job_type_id_eq': job_type.id}}.to_query
+

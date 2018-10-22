@@ -1,0 +1,48 @@
+// Place all the styles related to the jobs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.job-card {
+    margin-bottom: 20px;
+}
+
+.inner_card_contents {
+    overflow: hidden;
+}
+
+.card-detail {
+    overflow: hidden;
+}
+
+.card-text {
+    padding: 10px;
+    margin-bottom: 10px !important;
+    height: 120px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.card-title {
+    height: 48px;
+}
+
+.salary-text {
+    font-size: 19px;
+    margin-top: 5px;
+}
+
+.job_place {
+    color: gray;
+}
+
+.related_jobs {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.skill-button {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+}

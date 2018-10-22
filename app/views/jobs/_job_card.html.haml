@@ -1,0 +1,20 @@
+.col-lg-6.portfolio-item.job-card
+  .card.h-100
+    .card-body
+      %h5.card-title
+        = link_to job.title, job
+      %div
+        - job.skills[0,8].each do |skill|
+          = link_to skill.name, jobs_path + '?' + {'q': {'skills_id_eq': skill.id}}.to_query, class: 'badge badge-primary'
+      .inner_card_contents.mt-2
+        %h5.float-left
+          = link_to job.job_type.name, jobs_path + '?' + {'q': {'job_type_id_eq': job.job_type.id}}.to_query, class: 'btn btn-outline-primary btn-sm'
+        %h5.float-right.salary-text
+          = "#{reward_helper(job)} / #{workdays_helper(job)}"
+      .card-detail
+        %p.card-text.bg-light
+          = job.detail
+      %span.job_place
+        = job.location
+        - if job.remote_ok
+          (リモートOK)

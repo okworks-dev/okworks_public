@@ -1,0 +1,51 @@
+%nav.nav-bar-top.top-area
+  .container.top-detail-area
+    %h1.h2.top_copy 日本最大のIT系フリーランス案件/求人検索サービス
+    %h4.top_copy_sub
+      = "#{@all_job_count}件の案件/求人を掲載中"
+    .form-wrapper
+      = render partial: 'home/search_form', locals: {pc_background: false}
+.container
+  .text-center
+    %h4.mb-4 OKWorksとは
+  .row.text-center
+    .col-md-12
+      %p
+        OKWorksは、IT系のフリーランスエンジニア・デザイナーなどを対象に、企業とフリーランスのマッチングを支援します。
+      %p 
+        %small
+          フレキシブルな働き方や高収入を実現できる、IT系のフリーランスという働き方が拡大しています。
+          しかし、継続的に仕事を獲得するための営業活動は、時間や労力がかかります。
+          一方、社会的に、エンジニア、デザイナーなどIT系人材の需要が急増し、人手不足が発生しています。
+  .text-center
+    %h4.mb-4 フリーランスを応援する3つのOK
+    .row
+      .col-md-4.mb-7.mb-md-0
+        .text-center.px-lg-3
+          %img.max-width-14.mb-3{:src => "/assets/time.svg", :width => "30%"}/
+          %h3.h4 フレキシブルな働き方OK
+          %p.mb-2 週3日だけ、4日だけなどの生活スタイルや希望に合わせた働き方はもちろん、副業可能な案件がたくさんあります。
+      .col-md-4.mb-7.mb-md-0
+        .text-center.px-lg-3
+          %img.max-width-14.mb-3{:src => "/assets/rocket.svg", :width => "30%"}/
+          %h3.h4 リモートOK
+          %p.mb-2 常駐型だけではなく、フルリモート案件や一部リモート可など、多くの案件で、リモートでの働き方が認められています。
+      .col-md-4
+        .text-center.px-lg-3
+          %img.max-width-14.mb-3{:src => "/assets/money.svg", :width => "30%"}/
+          %h3.h4 高収入＆面白い仕事OK
+          %p.mb-2 専門性を活かしたハイスキルな求人ばかりなので、高収入かつユニークで面白い先進的な仕事をを見つけることができます。
+  .text-center
+    %h4.mb-4 豊富な案件から探せる
+  .row.text-center
+    .col-md-12
+      %p
+        OKWorksは、WEB上のフリーランス案件を収集しているため、非常に多くの案件の中から探すことが可能です。
+      .row
+        - @logos.each do |logo|
+          .col-3.col-sm-2.mb-2= image_tag "/assets/service_logos/#{logo}", width: '100%'
+
+= render 'latest_jobs', jobs: @jobs
+= render 'high_reward_ranking', jobs: @high_reward_jobs
+.container
+  = render partial: 'charts', locals: {skill_amount_bar: @skill_amount_bar, skill_amount_bar_sp: @skill_amount_bar_sp, skill_average_rewards_bar: @skill_average_rewards_bar, skill_average_rewards_bar_sp: @skill_average_rewards_bar_sp}

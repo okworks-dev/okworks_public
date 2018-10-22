@@ -1,0 +1,50 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}
+    %link{:crossorigin => "anonymous", :href => "https://use.fontawesome.com/releases/v5.3.1/css/all.css", :integrity => "sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU", :rel => "stylesheet"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = display_meta_tags(default_meta_tags)
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'    
+    = render 'layouts/tracking_tag'
+  %body.site-font
+    %nav.navbar.navbar-expand-md.navbar-light.bg-light
+      .container
+        %a.navbar-brand{:href => root_path}
+          .logo-font OKWorks
+        %button.navbar-toggler{"aria-controls" => "navbarNav3", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav3", "data-toggle" => "collapse", :type => "button"}
+          %span.navbar-toggler-icon
+        #navbarNav3.collapse.navbar-collapse
+          %ul.navbar-nav
+            %li.nav-item
+              %a.nav-link{:href => jobs_path}
+                %i.fas.fa-search
+                案件を探す
+            %li.nav-item
+              %a.nav-link{:href => 'https://docs.google.com/forms/d/e/1FAIpQLScnyscB7lPnya6fo-5g1fp977guwblY1gVNEpHN_DnoLcB4BQ/viewform?usp=sf_link'}
+                %i.fas.fa-edit
+                お問い合わせ
+            %li.nav-item
+              %a.nav-link{:href => 'https://twitter.com/codeq_official'}
+                %i.fab.fa-twitter
+                公式Twitter
+
+    - if notice
+      .container
+        .alert.alert-success.mt-3{:role => "alert"}
+          = notice
+          %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+    
+    = yield
+
+    %div
+      = render '/subscriptions/form'
+
+    %footer.py-4.bg-dark      
+      .container
+        = render 'layouts/seo_links'
+        %p.m-0.text-center.text-white Copyright © OKWorks 2018

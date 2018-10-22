@@ -1,0 +1,5 @@
+.container
+  %h4 高単価案件/求人ランキング
+  .list-group.home-list-group{:style => "margin-top:20px;"}
+    - jobs.each do |job|
+      = render 'high_reward_list_job', job: job

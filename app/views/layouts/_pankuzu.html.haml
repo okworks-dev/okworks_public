@@ -1,0 +1,10 @@
+.container
+  %nav.breadcrumb.mt-3
+    %small
+      %a.breadcrumb-item{:href => "/"} フリーランス案件・求人 OK Works
+      - links.each do |link|
+        - if link[:url].present?
+          %a.breadcrumb-item{:href => link[:url]}= link[:text]
+        - else
+          %span.breadcrumb-item.active= link[:text]
+     
