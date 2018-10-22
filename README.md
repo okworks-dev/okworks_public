@@ -1,24 +1,7 @@
-# README
+フリーランス案件の検索サービス「OKWorks」の2018/10/22時点のソースコードです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[https://www.okworks.me/](https://www.okworks.me/)
 
-Things you may want to cover:
+公開に関する詳細は下記を参照ください
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[【ソースを公開しました】「日本最大のIT系フリーランス案件/求人検索サービス」として「OKWorks」をリリース](https://qiita.com/codeq_official/items/50a2ddc33b139c0b911d)
